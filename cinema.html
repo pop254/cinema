@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marquee &mdash; Premium Cinemas, Nairobi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="cinema.css">
+</head>
+<body>
+<div class="grain"></div>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="#top" class="brand">MAR<em>QUEE</em></a>
+    <div class="navlinks">
+      <a href="#showing">Now Showing</a>
+      <a href="#imax">IMAX</a>
+      <a href="#soon">Coming Soon</a>
+      <a href="#locations">Cinemas</a>
+    </div>
+    <div class="navcta">
+      <a href="#showing" class="btn btn-gold">Book tickets</a>
+      <button class="burger" aria-label="Menu" onclick="document.querySelector('.navlinks').classList.toggle('open')"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <!-- slides injected via JS from data -->
+  <div class="hero-dots" id="heroDots"></div>
+  <div class="reel" id="reel"></div>
+</section>
+
+<section class="locations" id="locations">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>Pick your cinema</h2>
+        <p>Four premium sites across Nairobi. Showtimes update by location.</p>
+      </div>
+    </div>
+    <div class="loc-row" id="locRow"></div>
+
+    <div class="filter-row">
+      <button class="active" data-filter="showing" id="filterShowing">Now Showing</button>
+      <button data-filter="soon" id="filterSoon">Coming Soon</button>
+    </div>
+
+    <div class="movie-grid" id="movieGrid"></div>
+  </div>
+</section>
+
+<section class="imax-band" id="imax">
+  <span class="imax-mark">IMAX</span>
+  <div class="wrap imax-grid">
+    <div class="imax-copy">
+      <h2>The screen<br>gets out of the way.</h2>
+      <p>Laser-lit picture across a wall-to-wall screen, tuned sound in every seat, and a room engineered so nothing between you and the story. It's the way these films were meant to be seen.</p>
+      <div class="imax-stats">
+        <div><strong>1.43:1</strong><span>Expanded aspect ratio</span></div>
+        <div><strong>12</strong><span>Channel surround sound</span></div>
+        <div><strong>4</strong><span>IMAX rooms in Nairobi</span></div>
+      </div>
+      <a href="#showing" class="btn btn-line">See IMAX showtimes</a>
+    </div>
+    <div class="imax-visual">
+      <div class="screen"></div>
+      <div class="seatrow"></div>
+    </div>
+  </div>
+</section>
+
+<section id="soon">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>On the horizon</h2>
+        <p>Reserve early — early access seats open two weeks out.</p>
+      </div>
+    </div>
+    <div class="strip-wrap">
+      <div class="strip" id="soonStrip"></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Join the reel club</h2>
+    <p>Priority booking, a free ticket every month, and concession deals that actually add up.</p>
+    <a href="#" class="btn btn-gold">Become a member</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="brand">MAR<em>QUEE</em></a>
+        <p>Nairobi's premium cinema circuit — IMAX, laser projection and reserved seating at four locations across the city.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Cinemas</h4>
+        <a href="#locations">Riverbend Mall</a>
+        <a href="#locations">Crossroads</a>
+        <a href="#locations">Ridgeview</a>
+        <a href="#locations">Two Rivers</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#">About us</a>
+        <a href="#imax">What is IMAX</a>
+        <a href="#">Membership</a>
+        <a href="#">Careers</a>
+      </div>
+      <div class="foot-col">
+        <h4>Support</h4>
+        <a href="#">Ticket help</a>
+        <a href="#">Refunds</a>
+        <a href="#">Contact us</a>
+        <a href="#">Group bookings</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="year"></span> Marquee Cinemas Kenya. Front-end concept design.</span>
+      <div class="socials">
+        <a href="#" title="Instagram">IG</a>
+        <a href="#" title="Facebook">FB</a>
+        <a href="#" title="X">X</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="cinema.js"></script>
+</body>
+</html>
