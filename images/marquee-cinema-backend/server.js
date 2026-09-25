@@ -304,4 +304,4 @@ app.get("/api/admin/messages", adminRequired, (_req,res) => {
 app.use((_req,res)=>res.status(404).json({error:"Route not found"}));
 app.use((err,_req,res,_next)=>{console.error(err);res.status(500).json({error:"Internal server error"});});
 
-app.listen(PORT,()=>console.log(`Marquee API running on http://localhost:${PORT}`));
+app.listen(PORT,"0.0.0.0", ()=>{console.log(`Marquee API running on port${PORT}`)});
