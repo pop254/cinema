@@ -296,12 +296,33 @@ app.delete("/api/admin/showtimes/:id", adminRequired, (req,res) => {
 app.get("/api/admin/bookings", adminRequired, (_req,res) => {
   res.json({bookings:db.prepare("SELECT * FROM bookings ORDER BY created_at DESC LIMIT 500").all()});
 });
-
 app.get("/api/admin/messages", adminRequired, (_req,res) => {
-  res.json({messages:db.prepare("SELECT * FROM contact_messages ORDER BY created_at DESC LIMIT 500").all()});
+
+});
+
+app.get("/api/seed-production", (req, res) => {
+  try {
+    require("./seed.js");
+    res.json({
+      success: true,
+      message: "Database seeded successfully"
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
 });
 
 app.use((_req,res)=>res.status(404).json({error:"Route not found"}));
-app.use((err,_req,res,_next)=>{console.error(err);res.status(500).json({error:"Internal server error"});});
 
-app.listen(PORT,"0.0.0.0", ()=>{console.log(`Marquee API running on port${PORT}`)});
+app.use((err,_req,res,_next)=>{
+  console.error(err);
+  res.status(500).json({error:"Internal server error"});
+});
+
+app.listen(PORT, "0.0.0.0", ()=>{
+  console.log(`Marquee API running on port ${PORT}`);
+});
