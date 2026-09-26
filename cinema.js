@@ -1,5 +1,6 @@
 (function(){
   "use strict";
+  const API_BASE = "https://back-end-2-wfa4.onrender.com/api"; 
 
   /* ---------------- Photo helpers ---------------- */
   // A photo counts as "real" only once you've replaced the * with a file name
