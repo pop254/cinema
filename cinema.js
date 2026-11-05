@@ -186,12 +186,12 @@
   ];
 
 
-  var locations = [
-    {name:"Riverbend Mall", sub:"9 screens · 1 IMAX"},
-    {name:"Crossroads", sub:"6 screens"},
-    {name:"Ridgeview", sub:"7 screens · 1 IMAX"},
-    {name:"Two Rivers", sub:"8 screens · 1 IMAX"}
-  ];
+var locations = [
+    {name:"The Grand", sub:"Standard · 220 seats"},
+    {name:"The Reel", sub:"Standard · 180 seats"},
+    {name:"The Vault", sub:"Standard · 140 seats"},
+    {name:"IMAX", sub:"IMAX · 286 seats"}
+];
 
 
   /* ---------------- Hero ---------------- */
@@ -481,6 +481,10 @@
 
         grid.appendChild(card);
 
+        card.addEventListener("click", function(){
+  openBookingModal(m);
+});
+
       });
 
 
@@ -490,7 +494,25 @@
     }, 180);
   }
 
+function openBookingModal(movie){
+  var modal = document.getElementById("bookingModal");
+  var content = document.getElementById("modalContent");
 
+  var times = ["1:00 PM","4:15 PM","7:30 PM","9:45 PM"];
+
+  content.innerHTML =
+    '<h3>'+movie.title+'</h3>'+
+    '<div class="runtime">'+movie.genre+(movie.runtime?' · '+movie.runtime:'')+'</div>'+
+    '<div class="show-times">'+
+      times.map(function(t){ return '<button>'+t+'</button>'; }).join('')+
+    '</div>';
+
+  modal.classList.add("open");
+}
+
+document.getElementById("modalClose").addEventListener("click", function(){
+  document.getElementById("bookingModal").classList.remove("open");
+});
   /* =========================================================
      BACKEND MOVIE CONNECTION
      ========================================================= */
@@ -592,6 +614,7 @@
           };
 
         });
+        
 
 
       /* ---------------- Coming Soon from backend ---------------- */
@@ -709,7 +732,8 @@
      START
      ========================================================= */
 
-  loadMoviesFromAPI();
+  renderGrid();
+renderComingSoonStrip();
 
 
   /* ---------------- Footer year ---------------- */
